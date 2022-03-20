@@ -19,7 +19,7 @@ pub async fn new_server(port: u32) -> std::io::Result<()> {
         //  App Routes
         App::new()
             .app_data(db_pool.clone())
-            .app_data(schema.clone())
+            .app_data(schema)
             .wrap(Logger::default())
             //  Allowed Methods
             .wrap(Cors::default()
@@ -29,13 +29,8 @@ pub async fn new_server(port: u32) -> std::io::Result<()> {
                 .max_age(3600),
             )
             //  GraphQl Services
-            .service(web::resource("/graphql")
-                .route(web::get().to(graphql))
-                .route(web::post().to(graphql)),
-            )
-            .service(web::resource("/playground")
-                .route(web::get().to(playground))
-            )
+            .service(graphql)
+            .service(graphql_playground)
             
 
 
