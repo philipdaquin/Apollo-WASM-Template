@@ -6,14 +6,11 @@ use crate::db::{establish_connection, DatabaseKind};
 
 
 pub async fn new_server(port: u32) -> std::io::Result<()> {
-    
     std::env::set_var("RUST_LOG", "actix_web=debug");
     env_logger::init();
     //  Database connection pool
     let db_pool = establish_connection(DatabaseKind::ProductDb);
     let schema = std::sync::Arc::new(create_schema());
-
-
 
     HttpServer::new(move || {
         //  App Routes
@@ -29,10 +26,9 @@ pub async fn new_server(port: u32) -> std::io::Result<()> {
                 .max_age(3600),
             )
             //  GraphQl Services
-            .service(graphql)
-            .service(graphql_playground)
-            
-
+            .service()
+            .service()
+    
 
     })
     .bind(format!("127.0.0.1:{}", port))?
