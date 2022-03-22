@@ -34,8 +34,10 @@ pub async fn new_server(port: u32) -> std::io::Result<()> {
             //  GraphQl Services
             .service(graphql)
             .service(graphql_playground)
+            
 
     })
+    .workers(2)
     .bind(format!("127.0.0.1:{}", port))?
     .run()
     .await

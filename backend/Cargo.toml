@@ -6,12 +6,13 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-actix-web = "4.0.1"
-actix-web-lab = "0.15.0"
+actix = "0.12"
+actix-web = "4"
+actix-web-lab = "0.10"
 actix-cors = "0.6"
 diesel = { version = "1.4.8", features = ["postgres", "uuid", "r2d2", "chrono", "numeric"] }
-async-graphql = "3.0.35"
-async-graphql-actix-web = "3.0.35"
+async-graphql = "3"
+async-graphql-actix-web = "3"
 actix-threadpool = "0.3.3"
 env_logger = "0.9"
 log = "0.4"

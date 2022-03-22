@@ -7,14 +7,15 @@ use super::schema::AppSchema;
 
 /// GraphQL endpoint
 #[route("/graphql", method = "GET", method = "POST")]
-async fn graphql(schema: web::Data<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
+pub async fn graphql(schema: web::Data<AppSchema>, req: GraphQLRequest) -> GraphQLResponse {
     schema.execute(req.into_inner()).await.into()
 }
 
 /// GraphiQL playground UI
 #[get("/graphiql")]
-async fn graphql_playground() -> impl Responder {
+pub async fn graphql_playground() -> impl Responder {
     Html(playground_source(
-        GraphQLPlaygroundConfig::new("/graphql").subscription_endpoint("/graphql"),
+        GraphQLPlaygroundConfig::new("/graphql")
+        .subscription_endpoint("/graphql"),
     ))
 }
