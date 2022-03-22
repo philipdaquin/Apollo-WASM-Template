@@ -6,3 +6,4 @@ extern crate serde;
 
 pub mod server;
 pub mod db;
+pub mod graphql_modules;
