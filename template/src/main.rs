@@ -1,4 +1,4 @@
-use products::server::new_server;
+use template::server::new_server;
 use failure::Error;
 
 
