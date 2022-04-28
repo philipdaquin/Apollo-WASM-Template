@@ -1,1 +1,2 @@
-## yew-graphql-actix-diesel
+# yew-graphql-actix-diesel-template [WIP]
+
